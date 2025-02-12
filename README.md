@@ -1,6 +1,11 @@
 # Odoo14-PgAdmin
 
+Este docker-compose es para la clase de DAM2, facilita el modo en el que podemos crear una base de datos de **Odoo con módulos personalizados** con **PgAdmin**.
+
 ## Modo de empleo
+```Bash
+cd Odoo14-PgAdmin/
+```
 ```Bash
 docker-compose up -d
 ```
