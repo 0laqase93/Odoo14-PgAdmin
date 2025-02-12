@@ -24,3 +24,11 @@ Después de ejecutar el comando anterior accederemos entrando al siguiente link 
 Una vez estamos dentro accemos al panel de control con estas credenciales:
 - *Email*: admin@admin.com  
 - *Contraseña*: admin 
+
+Para configurar un nuevo servidor en PgAdmin necesitamos saber la ip del contenedor de la base de datos, para ello ejecutaremos el siguiente comando fuera del contenedor:
+```Bash
+docker inspect postgres | grep '"IPAddress"'
+```
+Seguido de eso solo tendríamos que insertar las credenciales de la base de datos:
+- *Usuario*: odoo  
+- *Contraseña*: odoo
