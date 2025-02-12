@@ -14,8 +14,8 @@ Después de ejecutar el comando anterior accederemos entrando al siguiente link 
 - http://localhost:8069
 
 Una vez estamos dentro accemos al panel de control con estas credenciales: 
-- *Usuario*: odoo  
-- *Contraseña*: odoo
+- *Usuario*: admin  
+- *Contraseña*: admin
 
 ### PgAdmin:
 Después de ejecutar el comando anterior accederemos entrando al siguiente link (Puede tardar un poco): 
