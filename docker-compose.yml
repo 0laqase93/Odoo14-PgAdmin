@@ -22,6 +22,7 @@ services:
       - odoo_data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
       - ./entrypoint.sh:/entrypoint.sh
+      - ./custom-addons:/mnt/extra-addons
     entrypoint: ["/bin/bash", "/entrypoint.sh"]
 
   pgadmin:
