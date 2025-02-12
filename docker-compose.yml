@@ -1,5 +1,6 @@
 services:
   db:
+    container_name: postgres
     image: postgres:13
     environment:
       - POSTGRES_DB=odoo
@@ -9,6 +10,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
   odoo:
+    container_name: odoo14
     image: odoo:14
     depends_on:
       - db
@@ -26,6 +28,7 @@ services:
     entrypoint: ["/bin/bash", "/entrypoint.sh"]
 
   pgadmin:
+    container_name: pgadmin
     image: dpage/pgadmin4
     depends_on:
       - db
