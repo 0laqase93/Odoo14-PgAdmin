@@ -17,6 +17,12 @@ Una vez estamos dentro accemos al panel de control con estas credenciales:
 - *Usuario*: admin  
 - *Contraseña*: admin
 
+*Atención*  
+Si se quiere entrar al contenedor de odoo con permisos root tienes que ejecutar este comando:
+```Bash
+docker exec -it --user root odoo14 bash
+```
+
 ### PgAdmin:
 Después de ejecutar el comando anterior accederemos entrando al siguiente link (Puede tardar un poco): 
 - http://localhost:5050  
