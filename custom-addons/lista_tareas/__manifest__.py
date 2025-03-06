@@ -22,9 +22,11 @@
 
     # Esto siempre se carga
     'data': [
-    #Este primero indica la política de acceso del módulo
-    'security/ir.model.access.csv',
-    #Cargamos las vistas y las plantillas
-    'views/views.xml',
+        #Este primero indica la política de acceso del módulo
+        'security/ir.model.access.csv',
+        #Cargamos las vistas y las plantillas
+        'views/views.xml',
+        'views/lista_tareas_views_kanban.xml',
+        'views/lista_tareas_view_calendar.xml'
     ]
 }

@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <!-- Vista Calendar para las tareas -->
+        <record id="lista_tareas.calendar_view" model="ir.ui.view">
+            <field name="name">lista_tareas.calendar</field>
+            <field name="model">lista_tareas.lista_tareas</field>
+            <field name="arch" type="xml">
+                <calendar string="Tareas" date_start="fecha">
+                    <field name="tarea"/>
+                    <field name="prioridad"/>
+                    <field name="urgente"/>
+                    <field name="realizada"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Acción para abrir la vista Calendar -->
+        <record id="lista_tareas.action_window_calendar" model="ir.actions.act_window">
+            <field name="name">Tareas Calendar</field>
+            <field name="res_model">lista_tareas.lista_tareas</field>
+            <field name="view_mode">calendar,form</field>
+            <!-- (Opcional) Puedes referenciar directamente la vista Calendar -->
+            <field name="view_id" ref="lista_tareas.calendar_view"/>
+        </record>
+
+        <!-- Menú para acceder a la vista Calendar -->
+        <menuitem id="lista_tareas.menu_calendar"
+                  name="Tareas Calendar"
+                  parent="lista_tareas.menu_root"
+                  action="lista_tareas.action_window_calendar"/>
+    </data>
+</odoo>

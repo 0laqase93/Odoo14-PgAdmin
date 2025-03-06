@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!-- Vista Kanban -->
+        <record id="lista_tareas.kanban_view" model="ir.ui.view">
+            <field name="name">lista_tareas.kanban</field>
+            <field name="model">lista_tareas.lista_tareas</field>
+            <field name="arch" type="xml">
+            <kanban>
+                <field name="tarea"/>
+                <field name="prioridad"/>
+                <field name="urgente"/>
+                <field name="realizada"/>
+                <field name="fecha"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="tarea"/></strong>
+                            <div>Prioridad: <field name="prioridad"/></div>
+                            <div>Urgente:
+                                <span t-if="record.urgente.raw_value">
+                                    <i class="fa fa-check-square-o"/>
+                                </span>
+                                <span t-else="">
+                                    <i class="fa fa-square-o"/>
+                                </span>
+                            </div>
+                            <div>Realizada:
+                                <span t-if="record.realizada.raw_value">
+                                    <i class="fa fa-check-square-o"/>
+                                </span>
+                                <span t-else="">
+                                    <i class="fa fa-square-o"/>
+                                </span>
+                            </div>
+                            <div>Fecha: <field name="fecha"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+            </field>
+        </record>
+
+        <!-- Acción para la vista Kanban -->
+        <record id="lista_tareas.action_window_kanban" model="ir.actions.act_window">
+            <field name="name">Tareas Kanban</field>
+            <field name="res_model">lista_tareas.lista_tareas</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+
+        <!-- Menú para acceder a la vista Kanban -->
+        <menuitem id="lista_tareas.menu_kanban"
+              name="Tareas Kanban"
+              parent="lista_tareas.menu_root"
+              action="lista_tareas.action_window_kanban"/>
+    </data>
+</odoo>

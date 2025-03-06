@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Acción para listar los ejemplares en una vista Tree -->
+    <record id="biblioteca_ejemplar_action" model="ir.actions.act_window">
+        <field name="name">Lista de Ejemplares</field>
+        <field name="res_model">ejemplar.biblioteca</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes gestionar los ejemplares para prestar.
+            </p>
+        </field>
+    </record>
+
+    <!-- Vista Tree para mostrar ejemplares -->
+    <record id="biblioteca_ejemplar_view_tree" model="ir.ui.view">
+        <field name="name">ejemplar.biblioteca.tree</field>
+        <field name="model">ejemplar.biblioteca</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" string="ID"/>
+                <field name="display_name" string="Ejemplar"/>
+                <field name="socio_id" string="Socio"/>
+                <field name="fecha_prestamo" string="Fecha préstamo"/>
+                <field name="disponibilidad" string="Disponibilidad"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <!-- Vista Form para editar un ejemplar -->
+    <record id="biblioteca_ejemplar_view_form" model="ir.ui.view">
+        <field name="name">ejemplar.biblioteca.form</field>
+        <field name="model">ejemplar.biblioteca</field>
+        <field name="arch" type="xml">
+            <form string="Ejemplar">
+                <sheet>
+                    <group>
+                        <field name="id" string="ID ejemplar" readonly="1"/>
+                        <field name="display_name" string="Ejemplar" readonly="1"/>
+                        <field name="comic_id" string="Cómic"/>
+                        <field name="estado_de_conservacion" string="Estado de Conservación"/>
+                        <field name="fecha_prestamo" string="Fecha de Préstamo"/>
+                        <field name="fecha_devolucion" string="Fecha Devolucion"/>
+                        <field name="socio_id" string="Socio"/>
+                    </group>
+                    <group>
+                        <!-- Campo para mostrar la portada del cómic -->
+                         <div style="text-align: center; margin-bottom: 15px;">
+                            <field
+                                name="portada"
+                                widget="image"
+                                style="max-height: 250px; max-width: 250px; object-fit: contain; border: 1px solid #ddd; padding: 5px;"
+                                class="oe_portada"/>
+                        </div>
+
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menú para acceder a la acción de ejemplares -->
+    <menuitem name="Ejemplares" 
+              id="biblioteca_ejemplar_menu" 
+              parent="biblioteca_base_menu" 
+              action="biblioteca_ejemplar_action"/>
+</odoo>

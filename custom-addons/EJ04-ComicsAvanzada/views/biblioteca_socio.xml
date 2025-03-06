@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vista Form para el modelo Socio Biblioteca -->
+    <record id="vista_socio_biblioteca_form" model="ir.ui.view">
+        <field name="name">socio.biblioteca.form</field>
+        <field name="model">socio.biblioteca</field>
+        <field name="arch" type="xml">
+            <form string="Socio Biblioteca">
+                <sheet>
+                    <group>
+                        <field name="nombre" string="Nombre"/>
+                        <field name="apellido" string="Apellidos"/>
+                        <field name="identificador" string="Identificador"/>
+                    </group>
+                    <notebook>
+                        <!-- Ejemplares en Préstamo -->
+                        <page string="Ejemplares en Préstamo">
+                            <field name="ejemplar_ids" mode="tree" widget="one2many_list" options="{'no_create': True}" readonly="1">
+                                <tree string="Ejemplares en Préstamo" selection="single" readonly="1">
+                                    <field name="display_name" string="Ejemplar"/>
+                                    <field name="fecha_prestamo" string="Préstamo"/>
+                                    <field name="fecha_devolucion" string="Devolución"/>
+
+                                    <!-- Botón "Devolver" en cada línea -->
+                                    <button name="action_devolver_individual"
+                                            type="object"
+                                            string="Devolver"
+                                            class="btn-primary"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <!-- Ejemplares Disponibles -->
+                        <page string="Ejemplares Disponibles">
+                            <field name="ejemplar_disponibles_ids" mode="tree" widget="one2many_list" options="{'no_create': True}" readonly="1">
+                                <tree string="Ejemplares Disponibles" selection="single" readonly="1">
+                                    <field name="display_name" string="Ejemplar"/>
+                                    <field name="estado_de_conservacion" string="Estado de Conservación"/>
+                                    <field name="esta_disponible" string="Disponible"/>
+
+                                    <!-- Botón "Prestar" en cada línea -->
+                                    <button name="action_prestar_individual"
+                                            type="object"
+                                            string="Tomar Prestado"
+                                            class="btn-primary"
+                                            context="{'socio_biblioteca_id': parent.id, 'ejemplar_id': id}"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Definición de la vista Tree -->
+    <record id="vista_socio_biblioteca_tree" model="ir.ui.view">
+        <field name="name">socio.biblioteca.tree</field>
+        <field name="model">socio.biblioteca</field>
+        <field name="arch" type="xml">
+            <tree string="Gestión de Socios">
+                <field name="nombre" string="Nombre"/>
+                <field name="apellido" string="Apellidos"/>
+                <field name="identificador" string="Identificador"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para abrir Socios Biblioteca -->
+    <record id="accion_socio_biblioteca" model="ir.actions.act_window">
+        <field name="name">Gestión de Socios</field>
+        <field name="res_model">socio.biblioteca</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Menú de socios biblioteca -->
+    <menuitem name="Socios"
+              id="menu_socio_biblioteca"
+              parent="biblioteca_base_menu"
+              action="accion_socio_biblioteca"/>
+</odoo>
